@@ -1,0 +1,22 @@
+services:
+  # Web Application (Survey Frontend)
+  web:
+    image: smartmechanicalworkshop/smart-mechanical-workshop-survey-web:latest
+    container_name: smart-mechanical-workshop-survey-web
+    ports:
+      - "80:80"
+    environment:
+      - API_URL=${API_URL:-/api/survey}
+    networks:
+      - survey-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+networks:
+  survey-network:
+    driver: bridge

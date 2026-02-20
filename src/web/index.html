@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pesquisa de Satisfação - Oficina Mecânica">
+    <title>Pesquisa de Satisfação - Oficina Mecânica</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="25" cy="25" r="24" stroke="#2563eb" stroke-width="2"/>
+                    <path d="M25 15L30 20L25 25L20 20L25 15Z" fill="#2563eb"/>
+                    <path d="M15 25L20 30L25 25L20 20L15 25Z" fill="#2563eb"/>
+                    <path d="M35 25L30 30L25 25L30 20L35 25Z" fill="#2563eb"/>
+                    <path d="M25 35L30 30L25 25L20 30L25 35Z" fill="#2563eb"/>
+                </svg>
+                <h1>Oficina Mecânica</h1>
+            </div>
+            <p class="subtitle">Pesquisa de Satisfação</p>
+        </header>
+
+        <div class="welcome-section">
+            <h2>Olá, <span id="customerName" class="highlight"></span>!</h2>
+            <p>Agradecemos por escolher nossos serviços. Sua opinião é muito importante para melhorarmos continuamente.</p>
+            <p class="instruction">Por favor, avalie cada aspecto do serviço prestado de <strong>0 a 5</strong>, onde:</p>
+            <div class="rating-legend">
+                <span><strong>0</strong> = Muito Insatisfeito</span>
+                <span><strong>5</strong> = Muito Satisfeito</span>
+            </div>
+        </div>
+
+        <form id="surveyForm" class="survey-form">
+            <!-- Question 1 -->
+            <div class="question-block">
+                <div class="question-header">
+                    <span class="question-number">1</span>
+                    <label for="q1">
+                        <span class="question-icon">🔧</span>
+                        <span class="question-text">Qualidade do serviço realizado no veículo</span>
+                    </label>
+                </div>
+                <div class="rating-group" role="radiogroup" aria-labelledby="q1-label">
+                    <input type="radio" name="q1" id="q1-0" value="0" required>
+                    <label for="q1-0" class="rating-label">0</label>
+
+                    <input type="radio" name="q1" id="q1-1" value="1" required>
+                    <label for="q1-1" class="rating-label">1</label>
+
+                    <input type="radio" name="q1" id="q1-2" value="2" required>
+                    <label for="q1-2" class="rating-label">2</label>
+
+                    <input type="radio" name="q1" id="q1-3" value="3" required>
+                    <label for="q1-3" class="rating-label">3</label>
+
+                    <input type="radio" name="q1" id="q1-4" value="4" required>
+                    <label for="q1-4" class="rating-label">4</label>
+
+                    <input type="radio" name="q1" id="q1-5" value="5" required>
+                    <label for="q1-5" class="rating-label">5</label>
+                </div>
+                <div class="error-message" id="q1-error">Por favor, selecione uma avaliação</div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-block">
+                <div class="question-header">
+                    <span class="question-number">2</span>
+                    <label for="q2">
+                        <span class="question-icon">👥</span>
+                        <span class="question-text">Atendimento e cordialidade da equipe</span>
+                    </label>
+                </div>
+                <div class="rating-group" role="radiogroup" aria-labelledby="q2-label">
+                    <input type="radio" name="q2" id="q2-0" value="0" required>
+                    <label for="q2-0" class="rating-label">0</label>
+
+                    <input type="radio" name="q2" id="q2-1" value="1" required>
+                    <label for="q2-1" class="rating-label">1</label>
+
+                    <input type="radio" name="q2" id="q2-2" value="2" required>
+                    <label for="q2-2" class="rating-label">2</label>
+
+                    <input type="radio" name="q2" id="q2-3" value="3" required>
+                    <label for="q2-3" class="rating-label">3</label>
+
+                    <input type="radio" name="q2" id="q2-4" value="4" required>
+                    <label for="q2-4" class="rating-label">4</label>
+
+                    <input type="radio" name="q2" id="q2-5" value="5" required>
+                    <label for="q2-5" class="rating-label">5</label>
+                </div>
+                <div class="error-message" id="q2-error">Por favor, selecione uma avaliação</div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-block">
+                <div class="question-header">
+                    <span class="question-number">3</span>
+                    <label for="q3">
+                        <span class="question-icon">⏱️</span>
+                        <span class="question-text">Prazo de entrega do veículo</span>
+                    </label>
+                </div>
+                <div class="rating-group" role="radiogroup" aria-labelledby="q3-label">
+                    <input type="radio" name="q3" id="q3-0" value="0" required>
+                    <label for="q3-0" class="rating-label">0</label>
+
+                    <input type="radio" name="q3" id="q3-1" value="1" required>
+                    <label for="q3-1" class="rating-label">1</label>
+
+                    <input type="radio" name="q3" id="q3-2" value="2" required>
+                    <label for="q3-2" class="rating-label">2</label>
+
+                    <input type="radio" name="q3" id="q3-3" value="3" required>
+                    <label for="q3-3" class="rating-label">3</label>
+
+                    <input type="radio" name="q3" id="q3-4" value="4" required>
+                    <label for="q3-4" class="rating-label">4</label>
+
+                    <input type="radio" name="q3" id="q3-5" value="5" required>
+                    <label for="q3-5" class="rating-label">5</label>
+                </div>
+                <div class="error-message" id="q3-error">Por favor, selecione uma avaliação</div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question-block">
+                <div class="question-header">
+                    <span class="question-number">4</span>
+                    <label for="q4">
+                        <span class="question-icon">💰</span>
+                        <span class="question-text">Relação custo-benefício do serviço</span>
+                    </label>
+                </div>
+                <div class="rating-group" role="radiogroup" aria-labelledby="q4-label">
+                    <input type="radio" name="q4" id="q4-0" value="0" required>
+                    <label for="q4-0" class="rating-label">0</label>
+
+                    <input type="radio" name="q4" id="q4-1" value="1" required>
+                    <label for="q4-1" class="rating-label">1</label>
+
+                    <input type="radio" name="q4" id="q4-2" value="2" required>
+                    <label for="q4-2" class="rating-label">2</label>
+
+                    <input type="radio" name="q4" id="q4-3" value="3" required>
+                    <label for="q4-3" class="rating-label">3</label>
+
+                    <input type="radio" name="q4" id="q4-4" value="4" required>
+                    <label for="q4-4" class="rating-label">4</label>
+
+                    <input type="radio" name="q4" id="q4-5" value="5" required>
+                    <label for="q4-5" class="rating-label">5</label>
+                </div>
+                <div class="error-message" id="q4-error">Por favor, selecione uma avaliação</div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question-block">
+                <div class="question-header">
+                    <span class="question-number">5</span>
+                    <label for="q5">
+                        <span class="question-icon">✨</span>
+                        <span class="question-text">Limpeza e cuidado com o veículo</span>
+                    </label>
+                </div>
+                <div class="rating-group" role="radiogroup" aria-labelledby="q5-label">
+                    <input type="radio" name="q5" id="q5-0" value="0" required>
+                    <label for="q5-0" class="rating-label">0</label>
+
+                    <input type="radio" name="q5" id="q5-1" value="1" required>
+                    <label for="q5-1" class="rating-label">1</label>
+
+                    <input type="radio" name="q5" id="q5-2" value="2" required>
+                    <label for="q5-2" class="rating-label">2</label>
+
+                    <input type="radio" name="q5" id="q5-3" value="3" required>
+                    <label for="q5-3" class="rating-label">3</label>
+
+                    <input type="radio" name="q5" id="q5-4" value="4" required>
+                    <label for="q5-4" class="rating-label">4</label>
+
+                    <input type="radio" name="q5" id="q5-5" value="5" required>
+                    <label for="q5-5" class="rating-label">5</label>
+                </div>
+                <div class="error-message" id="q5-error">Por favor, selecione uma avaliação</div>
+            </div>
+
+            <!-- Additional Comments -->
+            <div class="question-block">
+                <div class="question-header">
+                    <label for="comments">
+                        <span class="question-icon">💬</span>
+                        <span class="question-text">Comentários adicionais (opcional)</span>
+                    </label>
+                </div>
+                <textarea
+                    id="comments"
+                    name="comments"
+                    rows="4"
+                    placeholder="Compartilhe sua experiência ou sugestões..."
+                    maxlength="500"
+                ></textarea>
+                <div class="char-count">
+                    <span id="charCount">0</span>/500 caracteres
+                </div>
+            </div>
+
+            <!-- Progress Indicator -->
+            <div class="progress-section">
+                <p class="progress-text">Perguntas respondidas: <span id="progressCount">0</span>/5</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="submit-section">
+                <button type="submit" id="submitBtn" class="submit-btn">
+                    <span class="btn-text">Enviar Pesquisa</span>
+                    <span class="btn-loader"></span>
+                </button>
+            </div>
+        </form>
+
+        <!-- Success Message -->
+        <div id="successMessage" class="message success-message">
+            <div class="message-icon">✓</div>
+            <h3>Pesquisa enviada com sucesso!</h3>
+            <p>Agradecemos pelo seu feedback. Sua opinião nos ajuda a melhorar cada vez mais.</p>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="message error-message">
+            <div class="message-icon">✕</div>
+            <h3>Erro ao enviar pesquisa</h3>
+            <p id="errorText">Ocorreu um erro ao enviar sua pesquisa. Por favor, tente novamente.</p>
+            <button id="retryBtn" class="retry-btn">Tentar Novamente</button>
+        </div>
+
+        <!-- Missing Parameters Message -->
+        <div id="missingParamsMessage" class="message error-message">
+            <div class="message-icon">⚠️</div>
+            <h3>Parâmetros ausentes</h3>
+            <p>Esta página requer parâmetros na URL. Por favor, acesse através do link fornecido por e-mail.</p>
+            <p class="small-text">Formato esperado: ?nome=SeuNome&email=seu@email.com</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Oficina Mecânica. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="env-config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
