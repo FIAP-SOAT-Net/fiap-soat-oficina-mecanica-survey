@@ -1,0 +1,9 @@
+**/*.md
+**/bin/
+**/obj/
+**/.vs/
+**/.vscode/
+**/.idea/
+.dockerignore
+Dockerfile
+docker-compose*.yml

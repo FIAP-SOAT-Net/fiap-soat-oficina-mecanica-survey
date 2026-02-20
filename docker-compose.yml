@@ -6,7 +6,7 @@ services:
     ports:
       - "80:80"
     environment:
-      - API_URL=${API_URL:-/api/survey}
+      - API_URL=${API_URL:-http://api:8080/api/survey}
     networks:
       - survey-network
     restart: unless-stopped
@@ -16,7 +16,102 @@ services:
       timeout: 3s
       retries: 3
       start_period: 5s
+    depends_on:
+      - api
+
+  # API Application (Backend)
+  api:
+    image: smartmechanicalworkshop/smart-mechanical-workshop-survey-api:latest
+    container_name: smart-mechanical-workshop-survey-api
+    ports:
+      - "3000:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT:-Production}
+      - ASPNETCORE_URLS=http://+:8080
+      - MongoDB__ConnectionString=mongodb://mongodb:27017
+      - MongoDB__UserName=${MONGODB_USER:-root}
+      - MongoDB__Password=${MONGODB_PASSWORD:-example}
+      - RabbitMQ__HostName=rabbitmq
+      - RabbitMQ__Port=5672
+      - RabbitMQ__UserName=${RABBITMQ_USER:-guest}
+      - RabbitMQ__Password=${RABBITMQ_PASSWORD:-guest}
+      - Email__SmtpHost=${SMTP_HOST:-mailhog}
+      - Email__SmtpPort=${SMTP_PORT:-1025}
+      - Email__FromEmail=${FROM_EMAIL:-noreply@oficiname canica.com}
+      - Email__FromName=${FROM_NAME:-Oficina Mecânica}
+      - Survey__WebAppUrl=${WEB_APP_URL:-http://localhost}
+    networks:
+      - survey-network
+    restart: unless-stopped
+    depends_on:
+      - mongodb
+      - rabbitmq
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+
+  # MongoDB
+  mongodb:
+    image: mongo:7.0
+    container_name: smart-mechanical-workshop-survey-mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USER:-root}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PASSWORD:-example}
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - survey-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # RabbitMQ
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    container_name: smart-mechanical-workshop-survey-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER:-guest}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD:-guest}
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - survey-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # MailHog (for production, replace with real SMTP)
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: smart-mechanical-workshop-survey-mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - survey-network
+    restart: unless-stopped
+    profiles:
+      - dev  # Only start in dev profile
 
 networks:
   survey-network:
     driver: bridge
+
+volumes:
+  mongodb_data:
+  rabbitmq_data:

@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Fiap.Soat.SmartMechanicalWorkshop.Survey.Api</RootNamespace>
+    <UserSecretsId>191e7a13-2052-4580-b259-6f8e6b85c3bc</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- MongoDB Driver -->
+    <PackageReference Include="MongoDB.Driver" Version="3.6.0" />
+
+    <!-- RabbitMQ Client -->
+    <PackageReference Include="RabbitMQ.Client" Version="7.2.0" />
+
+    <!-- Microsoft Extensions -->
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.4" />
+
+    <!-- Mail Kit for email sending -->
+  </ItemGroup>
+
+</Project>
