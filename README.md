@@ -1,5 +1,7 @@
 # Smart Mechanical Workshop Survey
 
+[![Web Deploy](https://github.com/FIAP-SOAT-Net/fiap-soat-oficina-mecanica-survey/actions/workflows/webdeploy.yml/badge.svg)](https://github.com/FIAP-SOAT-Net/fiap-soat-oficina-mecanica-survey/actions/workflows/webdeploy.yml)
+
 Sistema de pesquisa de satisfação para oficina mecânica.
 
 ## 🏗️ Arquitetura
@@ -139,9 +141,15 @@ Veja [.env.example](.env.example) para mais detalhes.
 
 ## 📦 Publicar Imagem no Docker Hub
 
+### Manual (Via Terminal)
+
 ```bash
 # Login no Docker Hub
 docker login
+
+# Build da imagem
+cd src/web
+docker build -t smart-mechanical-workshop-survey-web .
 
 # Tag da imagem
 docker tag smart-mechanical-workshop-survey-web:latest \
@@ -149,12 +157,18 @@ docker tag smart-mechanical-workshop-survey-web:latest \
 
 # Push
 docker push smartmechanicalworkshop/smart-mechanical-workshop-survey-web:latest
-
-# Com versão específica
-docker tag smart-mechanical-workshop-survey-web:latest \
-  smartmechanicalworkshop/smart-mechanical-workshop-survey-web:1.0.0
-docker push smartmechanicalworkshop/smart-mechanical-workshop-survey-web:1.0.0
 ```
+
+### Automático (Via GitHub Actions)
+
+O deploy é feito manualmente através do GitHub Actions:
+
+1. Acesse: **Actions → Web Deploy**
+2. Clique em **Run workflow**
+3. Configure a tag desejada (ex: `v1.0.0`)
+4. Execute o workflow
+
+📖 **Guia completo**: [CICD.md](CICD.md)
 
 ## 🧪 Testando
 
@@ -210,22 +224,17 @@ docker-compose -f docker-compose.dev.yml up
 ## 📚 Documentação
 
 - [Web Frontend](src/web/README.md) - Documentação detalhada do frontend
+- [Docker Commands](DOCKER.md) - Guia de comandos Docker
+- [CI/CD Deploy](CICD.md) - Guia de deploy via GitHub Actions
 - [Variables Guide](.env.example) - Guia de variáveis de ambiente
 
 ## 🔐 Segurança
 
 - ✅ Headers de segurança configurados no Nginx
-- ✅ Prevenção de XSS
+- ✅ Sanitização de inputs no frontend
 - ✅ Validação de email
-- ⚠️ **IMPORTANTE**: Alterar senhas padrão em produção!
+- ✅ Prevenção de XSS
 
-## 📝 TODO
-Implementar API backend
-- [ ] Adicionar autenticação
-- [ ] Dashboard de analytics
-- [ ] Testes automatizados
-- [ ] CI/CD pipeline
+## 🚀 CI/CD
 
-## 📄 Licença
-
-FIAP SOAT - Projeto Acadêmico
+O projeto usa GitHub Actions para deploy automatizado. Veja o [guia completo de CI/CD](CICD.md).
