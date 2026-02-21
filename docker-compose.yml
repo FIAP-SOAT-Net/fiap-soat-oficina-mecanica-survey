@@ -1,7 +1,7 @@
 services:
   # Web Application (Survey Frontend)
   web:
-    image: smartmechanicalworkshop/smart-mechanical-workshop-survey-web:latest
+    image: igortessaro/smart-mechanical-workshop-survey-web:latest
     container_name: smart-mechanical-workshop-survey-web
     ports:
       - "80:80"
@@ -21,7 +21,7 @@ services:
 
   # API Application (Backend)
   api:
-    image: smartmechanicalworkshop/smart-mechanical-workshop-survey-api:latest
+    image: igortessaro/smart-mechanical-workshop-survey-api:latest
     container_name: smart-mechanical-workshop-survey-api
     ports:
       - "3000:8080"
