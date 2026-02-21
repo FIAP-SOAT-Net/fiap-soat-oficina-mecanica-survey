@@ -9,17 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- MongoDB Driver -->
     <PackageReference Include="MongoDB.Driver" Version="3.6.0" />
-
-    <!-- RabbitMQ Client -->
     <PackageReference Include="RabbitMQ.Client" Version="7.2.0" />
-
-    <!-- Microsoft Extensions -->
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.4" />
-
-    <!-- Mail Kit for email sending -->
+    <PackageReference Include="NewRelic.Agent" Version="10.47.1" />
+    <PackageReference Include="NewRelic.Agent.Api" Version="10.47.1" />
   </ItemGroup>
 
 </Project>
